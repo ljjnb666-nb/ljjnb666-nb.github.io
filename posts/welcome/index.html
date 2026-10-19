@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>知造之间：这个博客是什么 · 知造之间</title><meta name="description" content="第一次来？这篇介绍「知造之间」的品牌、栏目，以及右下角 AI 助手的用法。"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><script>
+      // 主题初始化（防闪烁）：默认浅色
+      (function () {
+        try {
+          var t = localStorage.getItem('zhizao_theme') || 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/about.OhRMSEUs.css"></head> <body> <header class="topbar"> <a class="brand" href="/">Jeyrin<span class="dot-accent">.</span></a> <nav> <a href="/" class> 首页 </a><a href="/posts" class="active"> 文章 </a><a href="/projects" class> 作品 </a><a href="/explore" class> 探索 </a><a href="/about" class> 关于 </a><a href="/timeline" class> 时间线 </a> <button class="theme-toggle" id="theme-toggle" aria-label="切换深色 / 浅色主题" title="切换深色 / 浅色主题"> <span id="theme-icon">◐</span> </button> </nav> </header> <main class>  <article> <div class="article-head"> <h1> 知造之间：这个博客是什么 <span class="badge-sample">示例</span> </h1> <div class="article-meta"> <span class="byline">知造之间 · by Jeyrin</span>  ·  2026-10-19 </div> </div> <div class="prose"> <blockquote>
+<p>⚠️ 示例文章：本文为占位写法，站长会替换为正式版本。</p>
+</blockquote>
+<h2 id="知造之间是什么">知造之间是什么</h2>
+<p>「知造之间」是 Jeyrin 的个人数字空间，用来记录持续探索、独立思考和动手创造的过程。</p>
+<p>品牌理念很简单：<strong>以思考为起点，以创造为答案。</strong>（Think. Make. Evolve.）</p>
+<p>知识不应止于理解，想法也不应停留在脑海。从一个问题到一个想法，从一个原型到一个完整作品——这个博客记录的就是这个过程。</p>
+<h2 id="栏目导览">栏目导览</h2>
+<ul>
+<li><strong>文章</strong>：造物日志——每一次真实构建的完整记录：背景、尝试、踩坑、结果、下一步。</li>
+<li><strong>作品</strong>：实际开发的项目、演示、技术方案和复盘。</li>
+<li><strong>探索</strong>：研究实验、学习笔记和未来方向，还在进行中的思考。</li>
+<li><strong>关于</strong>：我是谁、在关注什么。</li>
+<li><strong>时间线</strong>：重要作品和成长节点，只记录真实发生的事。</li>
+</ul>
+<h2 id="右下角的-ai-助手">右下角的 AI 助手</h2>
+<p>点右下角的 <strong>✦ 问 AI</strong> 会打开站内 AI 助手。它只根据本站文章内容回答问题——实现方式是把全部文章在构建时注入 system prompt。</p>
+<p>它是 <strong>BYOK 模式</strong>：你自己填 OpenAI-compatible 的 base URL、API Key 和模型名。Key 只存在你的浏览器 localStorage，请求直接发往你填的 API 地址；本站是纯静态的，没有后端，Key 不会经过任何本站服务器。</p>
+<h2 id="造物日志是什么">造物日志是什么</h2>
+<p>这个博客的核心内容体裁是<strong>造物日志（build log）</strong>：每篇文章记录一次真实的构建过程。下一篇示例文章展示了推荐的写作结构。</p> </div> </article> <a class="back-link" href="/posts">← 全部文章</a>  </main> <footer> <div class="sig">知造之间 · by Jeyrin</div> <div>以思考为起点，以创造为答案。</div> <div class="slogan-en">THINK · MAKE · EVOLVE</div> </footer> <button id="ask-fab" class="ask-fab" aria-label="打开站内 AI 助手"> <span class="spark">✦</span> 问 AI
+</button> <aside id="ask-panel" class="ask-panel" hidden aria-label="站内 AI 助手"> <div class="ask-head"> <span>✦ 站内 AI 助手</span> <button id="ask-close" aria-label="关闭">×</button> </div> <div class="ask-secure">
+🔒 BYOK 模式：你的 API Key 只保存在本浏览器 localStorage，
+    请求直接发往你填写的 API 地址。本站是纯静态的、没有后端，
+    Key 不会经过任何本站服务器。
+</div> <details class="ask-settings"> <summary>⚙ 设置（base URL / Key / 模型）</summary> <label>Base URL（OpenAI-compatible）
+<input id="ask-base" placeholder="https://api.openai.com/v1" autocomplete="off" spellcheck="false"> </label> <label>API Key
+<input id="ask-key" type="password" placeholder="sk-…" autocomplete="off" spellcheck="false"> </label> <label>模型
+<input id="ask-model" placeholder="gpt-4o-mini" autocomplete="off" spellcheck="false"> </label> <button id="ask-save">保存到本机浏览器</button> </details> <div id="ask-msgs" class="ask-msgs"></div> <div class="ask-input-row"> <input id="ask-input" placeholder="就本站内容提问…" aria-label="向 AI 助手提问"> <button id="ask-send">发送</button> </div> </aside> <script>(function(){const articlesJson = "[{\"title\":\"知造之间：这个博客是什么\",\"slug\":\"welcome\",\"body\":\"> ⚠️ 示例文章：本文为占位写法，站长会替换为正式版本。\\n\\n## 知造之间是什么\\n\\n「知造之间」是 Jeyrin 的个人数字空间，用来记录持续探索、独立思考和动手创造的过程。\\n\\n品牌理念很简单：**以思考为起点，以创造为答案。**（Think. Make. Evolve.）\\n\\n知识不应止于理解，想法也不应停留在脑海。从一个问题到一个想法，从一个原型到一个完整作品——这个博客记录的就是这个过程。\\n\\n## 栏目导览\\n\\n- **文章**：造物日志——每一次真实构建的完整记录：背景、尝试、踩坑、结果、下一步。\\n- **作品**：实际开发的项目、演示、技术方案和复盘。\\n- **探索**：研究实验、学习笔记和未来方向，还在进行中的思考。\\n- **关于**：我是谁、在关注什么。\\n- **时间线**：重要作品和成长节点，只记录真实发生的事。\\n\\n## 右下角的 AI 助手\\n\\n点右下角的 **✦ 问 AI** 会打开站内 AI 助手。它只根据本站文章内容回答问题——实现方式是把全部文章在构建时注入 system prompt。\\n\\n它是 **BYOK 模式**：你自己填 OpenAI-compatible 的 base URL、API Key 和模型名。Key 只存在你的浏览器 localStorage，请求直接发往你填的 API 地址；本站是纯静态的，没有后端，Key 不会经过任何本站服务器。\\n\\n## 造物日志是什么\\n\\n这个博客的核心内容体裁是**造物日志（build log）**：每篇文章记录一次真实的构建过程。下一篇示例文章展示了推荐的写作结构。\"},{\"title\":\"示例：一篇造物日志长什么样\",\"slug\":\"sample-build-log\",\"body\":\"> ⚠️ 示例文章：以下全部为占位写法，待替换为真实的构建记录。\\n\\n造物日志是「知造之间」的核心内容体裁：记录一次真实的构建过程。推荐按下面的结构写，不必拘泥，关键是**真实、具体、可复现**。\\n\\n## 背景\\n\\n（占位）这里写你为什么要做这个东西：遇到了什么问题，或者看到了什么机会。一两段讲清楚动机即可。\\n\\n## 尝试了什么\\n\\n（占位）记录关键的技术选型和实现路径：\\n\\n- 方案 A：……，为什么没选\\n- 方案 B：……，最终选了这个，因为……\\n\\n## 踩了哪些坑\\n\\n（占位）这是造物日志最有价值的部分。写 2–3 个具体的坑：现象是什么、怎么定位的、最后怎么解决的。越具体越好，读者就是为这个来的。\\n\\n1. 坑一：（占位）\\n2. 坑二：（占位）\\n\\n## 结果\\n\\n（占位）上线效果：数据、截图、读者反馈。能量化就量化。\\n\\n```ts\\n// （占位）关键代码片段用 JetBrains Mono 展示\\nfunction shipIt() {\\n  return 'done';\\n}\\n```\\n\\n## 下一步\\n\\n（占位）这个东西接下来打算怎么迭代，或者学到了什么下次会换种做法。\"}]";
+const brand = "知造之间";
+const signature = "知造之间 · by Jeyrin";
+
+  const articles = JSON.parse(articlesJson);
+  const LS_BASE = 'zhizao_ask_base';
+  const LS_KEY = 'zhizao_ask_key';
+  const LS_MODEL = 'zhizao_ask_model';
+
+  const fab = document.getElementById('ask-fab');
+  const panel = document.getElementById('ask-panel');
+  const closeBtn = document.getElementById('ask-close');
+  const msgs = document.getElementById('ask-msgs');
+  const input = document.getElementById('ask-input');
+  const sendBtn = document.getElementById('ask-send');
+  const baseInput = document.getElementById('ask-base');
+  const keyInput = document.getElementById('ask-key');
+  const modelInput = document.getElementById('ask-model');
+  const saveBtn = document.getElementById('ask-save');
+
+  const esc = (s) =>
+    String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  // 恢复本地设置
+  baseInput.value = localStorage.getItem(LS_BASE) || '';
+  modelInput.value = localStorage.getItem(LS_MODEL) || '';
+  if (localStorage.getItem(LS_KEY)) keyInput.placeholder = '已保存（●●●●）';
+
+  function addMsg(kind, text) {
+    const d = document.createElement('div');
+    d.className = `msg ${kind}`;
+    d.innerHTML = esc(text).replace(/\n/g, '<br>');
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+    return d;
+  }
+
+  function togglePanel() {
+    panel.hidden = !panel.hidden;
+    if (!panel.hidden) input.focus();
+  }
+
+  fab.addEventListener('click', togglePanel);
+  closeBtn.addEventListener('click', () => {
+    panel.hidden = true;
+  });
+
+  saveBtn.addEventListener('click', () => {
+    const base = baseInput.value.trim();
+    const key = keyInput.value.trim();
+    const model = modelInput.value.trim();
+    if (base) localStorage.setItem(LS_BASE, base);
+    if (key) {
+      localStorage.setItem(LS_KEY, key);
+      keyInput.value = '';
+      keyInput.placeholder = '已保存（●●●●）';
+    }
+    if (model) localStorage.setItem(LS_MODEL, model);
+    addMsg('sys', '设置已保存到本机浏览器。');
+  });
+
+  function buildSystemPrompt() {
+    const context = articles
+      .map((a) => `\n${String(a.body || '').slice(0, 4000)}`)
+      .join('\n\n---\n\n');
+    return (
+      `你是「${brand}」（${signature}）博客的站内问答助手。` +
+      `请只根据以下本站文章内容回答用户问题；` +
+      `如果文章里没有相关信息，请明确说"本站文章里没提到"，不要编造。` +
+      `回答用中文，简洁。\n\n本站文章内容：\n${context}`
+    );
+  }
+
+  let thinkingEl = null;
+
+  async function send() {
+    const q = input.value.trim();
+    if (!q || thinkingEl) return;
+    const base = (
+      localStorage.getItem(LS_BASE) ||
+      baseInput.value.trim() ||
+      'https://api.openai.com/v1'
+    ).replace(/\/+$/, '');
+    const key = localStorage.getItem(LS_KEY) || keyInput.value.trim();
+    const model =
+      localStorage.getItem(LS_MODEL) || modelInput.value.trim() || 'gpt-4o-mini';
+
+    if (!key) {
+      addMsg('sys', '请先在上方 ⚙ 设置里填写 API Key（只存你的浏览器本地）。');
+      return;
+    }
+
+    addMsg('user', q);
+    input.value = '';
+    thinkingEl = addMsg('sys', '思考中…');
+
+    try {
+      const res = await fetch(`${base}/chat/completions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${key}`,
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: 'system', content: buildSystemPrompt() },
+            { role: 'user', content: q },
+          ],
+        }),
+      });
+      if (!res.ok) {
+        const t = await res.text().catch(() => '');
+        throw new Error(`HTTP ${res.status} ${t.slice(0, 120)}`);
+      }
+      const data = await res.json();
+      const reply =
+        (data.choices &&
+          data.choices[0] &&
+          data.choices[0].message &&
+          data.choices[0].message.content) ||
+        '(空回复)';
+      thinkingEl.className = 'msg ai';
+      thinkingEl.innerHTML = esc(reply).replace(/\n/g, '<br>');
+    } catch (err) {
+      thinkingEl.className = 'msg sys';
+      thinkingEl.textContent = `请求失败：${
+        err && err.message ? err.message : err
+      }。检查 base URL / Key / 模型名 / 网络。`;
+    } finally {
+      thinkingEl = null;
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+  }
+
+  sendBtn.addEventListener('click', send);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') send();
+  });
+
+  addMsg(
+    'sys',
+    `你好，我是${signature}的站内助手。我只根据本站文章内容回答问题。先在 ⚙ 里填好你的 Key 就可以开问。`
+  );
+})();</script> <script>
+      // 主题切换
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        var icon = document.getElementById('theme-icon');
+        function render() {
+          var dark =
+            document.documentElement.getAttribute('data-theme') === 'dark';
+          if (icon) icon.textContent = dark ? '◑' : '◐';
+        }
+        render();
+        if (btn) {
+          btn.addEventListener('click', function () {
+            var cur = document.documentElement.getAttribute('data-theme');
+            var next = cur === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try {
+              localStorage.setItem('zhizao_theme', next);
+            } catch (e) {}
+            render();
+          });
+        }
+      })();
+    </script> </body> </html>
