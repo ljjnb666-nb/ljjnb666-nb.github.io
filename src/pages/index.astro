@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../config';
 import { getCollection } from 'astro:content';
 import { projects } from '../data/projects';
+import ProjectCard from '../components/ProjectCard.astro';
 
 const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -52,25 +53,7 @@ const statusLabel = { live: '已上线', wip: '开发中', placeholder: '示例'
       <a href="/projects">全部作品 →</a>
     </div>
     <div class="cards">
-      {
-        featuredProjects.map((p) => (
-          <div class="card">
-            <h3>
-              {p.link ? (
-                <a href={p.link} target="_blank" rel="noopener">
-                  {p.name}
-                </a>
-              ) : (
-                p.name
-              )}
-              <span class={`status ${p.status}`}>{statusLabel[p.status]}</span>
-            </h3>
-            <p>{p.tagline}</p>
-            {p.note && <div class="note">{p.note}</div>}
-            <div class="tech">{p.tech.join(' · ')}</div>
-          </div>
-        ))
-      }
+      {featuredProjects.map((p) => <ProjectCard p={p} statusLabel={statusLabel} />)}
     </div>
   </section>
 </BaseLayout>

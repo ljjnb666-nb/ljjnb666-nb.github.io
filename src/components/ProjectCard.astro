@@ -1,0 +1,18 @@
+---
+// 项目卡片：整卡可点击（有 link 时外层即为 <a>）
+const { p, statusLabel } = Astro.props;
+const Tag = p.link ? 'a' : 'div';
+const linkAttrs = p.link
+  ? { href: p.link, target: '_blank', rel: 'noopener' }
+  : {};
+---
+
+<Tag class="card card-link" {...linkAttrs}>
+  <h3>
+    {p.name}
+    <span class={`status ${p.status}`}>{statusLabel[p.status]}</span>
+  </h3>
+  <p>{p.tagline}</p>
+  {p.note && <div class="note">{p.note}</div>}
+  <div class="tech">{p.tech.join(' · ')}</div>
+</Tag>

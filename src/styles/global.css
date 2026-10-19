@@ -275,6 +275,14 @@ main.wide {
 [data-theme='dark'] .card:hover {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
+/* 整卡可点击：卡片本身即链接 */
+a.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+a.card h3 { color: var(--ink); }
 .card h3 {
   margin: 0 0 0.6rem;
   font-size: 1.15rem;

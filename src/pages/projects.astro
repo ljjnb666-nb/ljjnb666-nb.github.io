@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { projects } from '../data/projects';
+import ProjectCard from '../components/ProjectCard.astro';
 
 const statusLabel = { live: '已上线', wip: '开发中', placeholder: '示例' } as const;
 ---
@@ -12,25 +13,7 @@ const statusLabel = { live: '已上线', wip: '开发中', placeholder: '示例'
   </div>
 
   <div class="cards">
-    {
-      projects.map((p) => (
-        <div class="card">
-          <h3>
-            {p.link ? (
-              <a href={p.link} target="_blank" rel="noopener">
-                {p.name}
-              </a>
-            ) : (
-              p.name
-            )}
-            <span class={`status ${p.status}`}>{statusLabel[p.status]}</span>
-          </h3>
-          <p>{p.tagline}</p>
-          {p.note && <div class="note">{p.note}</div>}
-          <div class="tech">{p.tech.join(' · ')}</div>
-        </div>
-      ))
-    }
+    {projects.map((p) => <ProjectCard p={p} statusLabel={statusLabel} />)}
   </div>
 
   <p style="color: var(--muted); font-size: 0.9rem; margin-top: 2rem;">
