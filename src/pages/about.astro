@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+---
+
+<BaseLayout title="关于" nav="about">
+  <div class="page-head">
+    <h1>关于</h1>
+  </div>
+
+  <div class="about-intro">
+    <p>你好，我是 Jeyrin，一名热爱技术、思考和创造的开发者。</p>
+    <p>
+      我关注人工智能、软件工程、机器人，以及如何把想法变成真正能够运行的作品。
+    </p>
+    <p>
+      「知造之间」是我的个人数字空间，用来记录持续探索、独立思考和动手创造的过程。
+    </p>
+  </div>
+
+  <dl class="kv">
+    <dt>品牌</dt>
+    <dd>知造之间 · by Jeyrin</dd>
+    <dt>定位</dt>
+    <dd>独立思考者、开发者与创造者的数字空间</dd>
+    <dt>关键词</dt>
+    <dd>理性、探索、创造、成长、长期主义</dd>
+    <dt>理念</dt>
+    <dd>{SITE.tagline} {SITE.taglineEn}</dd>
+  </dl>
+
+  <div class="about-en">
+    <h2>In English</h2>
+    <p>
+      Hi, I'm Jeyrin — a developer and creator exploring AI, software,
+      robotics, and the space between ideas and implementation.
+    </p>
+    <p>
+      Thought &amp; Form is where I share what I learn, build, and discover
+      along the way.
+    </p>
+  </div>
+
+  <a class="back-link" href="/">← 返回首页</a>
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+import { getCollection } from 'astro:content';
+import { projects } from '../data/projects';
+
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const featuredProjects = projects.filter((p) => p.status === 'live').slice(0, 3);
+const statusLabel = { live: '已上线', wip: '开发中', placeholder: '示例' } as const;
+---
+
+<BaseLayout nav="home" wide>
+  <section class="hero">
+    <div class="kicker">Thought &amp; Form</div>
+    <h1>知造之间</h1>
+    <p class="slogan">{SITE.tagline}</p>
+    <p class="slogan-en">{SITE.taglineEn}</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>精选文章</h2>
+      <a href="/posts">全部文章 →</a>
+    </div>
+    {
+      posts.map((p) => (
+        <a
+          class="post-row"
+          href={`/posts/${p.id.replace(/\.mdx?$/, '')}`}
+        >
+          <div class="post-row-title">
+            {p.data.title}
+            {p.data.sample && <span class="badge-sample">示例</span>}
+          </div>
+          {p.data.description && (
+            <p class="post-row-desc">{p.data.description}</p>
+          )}
+          <div class="post-row-meta">
+            {p.data.date.toISOString().slice(0, 10)}
+          </div>
+        </a>
+      ))
+    }
+  </section>
+
+  <section style="margin-top: 3.5rem;">
+    <div class="section-head">
+      <h2>精选作品</h2>
+      <a href="/projects">全部作品 →</a>
+    </div>
+    <div class="cards">
+      {
+        featuredProjects.map((p) => (
+          <div class="card">
+            <h3>
+              {p.link ? (
+                <a href={p.link} target="_blank" rel="noopener">
+                  {p.name}
+                </a>
+              ) : (
+                p.name
+              )}
+              <span class={`status ${p.status}`}>{statusLabel[p.status]}</span>
+            </h3>
+            <p>{p.tagline}</p>
+            {p.note && <div class="note">{p.note}</div>}
+            <div class="tech">{p.tech.join(' · ')}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { exploreItems, kindLabel } from '../data/explore';
+---
+
+<BaseLayout title="探索" nav="explore">
+  <div class="page-head">
+    <h1>探索</h1>
+    <p>研究实验、学习笔记和未来方向——还在进行中的思考。</p>
+  </div>
+
+  {
+    exploreItems.map((item) => (
+      <div class="explore-item">
+        <span class="kind">{kindLabel[item.kind]}</span>
+        <h3>
+          {item.title}
+          {item.sample && <span class="badge-sample">示例</span>}
+        </h3>
+        <p>{item.description}</p>
+        <div class="explore-meta">{item.date}</div>
+      </div>
+    ))
+  }
+
+  <p style="color: var(--muted); font-size: 0.9rem; margin-top: 2rem;">
+    条目数据来自 <code>src/data/explore.ts</code>，加条目只改那一个文件。
+  </p>
+</BaseLayout>

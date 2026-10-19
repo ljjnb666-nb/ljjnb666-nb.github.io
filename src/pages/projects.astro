@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+
+const statusLabel = { live: '已上线', wip: '开发中', placeholder: '示例' } as const;
+---
+
+<BaseLayout title="作品" nav="projects" wide>
+  <div class="page-head">
+    <h1>作品</h1>
+    <p>实际开发的项目、演示、技术方案和复盘。</p>
+  </div>
+
+  <div class="cards">
+    {
+      projects.map((p) => (
+        <div class="card">
+          <h3>
+            {p.link ? (
+              <a href={p.link} target="_blank" rel="noopener">
+                {p.name}
+              </a>
+            ) : (
+              p.name
+            )}
+            <span class={`status ${p.status}`}>{statusLabel[p.status]}</span>
+          </h3>
+          <p>{p.tagline}</p>
+          {p.note && <div class="note">{p.note}</div>}
+          <div class="tech">{p.tech.join(' · ')}</div>
+        </div>
+      ))
+    }
+  </div>
+
+  <p style="color: var(--muted); font-size: 0.9rem; margin-top: 2rem;">
+    项目数据来自 <code>src/data/projects.ts</code>，加项目只改那一个文件。
+  </p>
+</BaseLayout>

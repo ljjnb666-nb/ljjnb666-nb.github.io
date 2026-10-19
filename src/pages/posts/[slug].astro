@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../config';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((p) => ({
+    params: { slug: p.id.replace(/\.mdx?$/, '') },
+    props: { post: p },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  nav="posts"
+>
+  <article>
+    <div class="article-head">
+      <h1>
+        {post.data.title}
+        {post.data.sample && <span class="badge-sample">示例</span>}
+      </h1>
+      <div class="article-meta">
+        <span class="byline">{SITE.signature}</span>
+        {' · '}
+        {post.data.date.toISOString().slice(0, 10)}
+      </div>
+    </div>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+  <a class="back-link" href="/posts">← 全部文章</a>
+</BaseLayout>

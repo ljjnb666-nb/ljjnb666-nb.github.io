@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+import { SITE } from '../config';
+import { getCollection } from 'astro:content';
+import AskPanel from '../components/AskPanel.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  wide?: boolean;
+  nav?: 'home' | 'posts' | 'projects' | 'explore' | 'about' | 'timeline';
+}
+
+const { title, description = SITE.description, wide = false, nav } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE.brand}` : `${SITE.brand} — ${SITE.tagline}`;
+
+// 把全部文章注入 AI 助手，作为站内问答的知识库
+const allPosts = await getCollection('posts');
+const articles = allPosts.map((p) => ({
+  title: p.data.title,
+  slug: p.id.replace(/\.mdx?$/, ''),
+  body: p.body,
+}));
+
+const navItems = [
+  { href: '/', label: '首页', key: 'home' },
+  { href: '/posts', label: '文章', key: 'posts' },
+  { href: '/projects', label: '作品', key: 'projects' },
+  { href: '/explore', label: '探索', key: 'explore' },
+  { href: '/about', label: '关于', key: 'about' },
+  { href: '/timeline', label: '时间线', key: 'timeline' },
+] as const;
+---
+
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      // 主题初始化（防闪烁）：默认浅色
+      (function () {
+        try {
+          var t = localStorage.getItem('zhizao_theme') || 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">Jeyrin<span class="dot-accent">.</span></a>
+      <nav>
+        {
+          navItems.map((item) => (
+            <a href={item.href} class={nav === item.key ? 'active' : ''}>
+              {item.label}
+            </a>
+          ))
+        }
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          aria-label="切换深色 / 浅色主题"
+          title="切换深色 / 浅色主题"
+        >
+          <span id="theme-icon">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class={wide ? 'wide' : ''}>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="sig">{SITE.signature}</div>
+      <div>{SITE.tagline}</div>
+      <div class="slogan-en">THINK · MAKE · EVOLVE</div>
+    </footer>
+
+    <AskPanel articles={articles} brand={SITE.brand} signature={SITE.signature} />
+
+    <script is:inline>
+      // 主题切换
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        var icon = document.getElementById('theme-icon');
+        function render() {
+          var dark =
+            document.documentElement.getAttribute('data-theme') === 'dark';
+          if (icon) icon.textContent = dark ? '◑' : '◐';
+        }
+        render();
+        if (btn) {
+          btn.addEventListener('click', function () {
+            var cur = document.documentElement.getAttribute('data-theme');
+            var next = cur === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try {
+              localStorage.setItem('zhizao_theme', next);
+            } catch (e) {}
+            render();
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

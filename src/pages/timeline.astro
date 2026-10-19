@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// 时间线只记录可验证的真实节点，不确定的不写。
+const events = [
+  {
+    date: '2026-10-19',
+    title: '个人品牌规范 V1.0 确定',
+    text: '「知造之间 × Jeyrin」品牌体系确立：中文品牌知造之间、英文昵称 Jeyrin、slogan「以思考为起点，以创造为答案。」/ Think. Make. Evolve.',
+  },
+  {
+    date: '2026-10-19',
+    title: 'BareRecipe v0.3.2 通过 Chrome Web Store 审核并上线',
+    text: 'Chrome 扩展 BareRecipe 正式上架 Chrome Web Store，用户可直接安装使用。',
+  },
+  {
+    date: '2026-10-16',
+    title: 'BareRecipe Pro 在 Gumroad 上线',
+    text: '一键从任意 cooking 网站提取菜谱正文的 Chrome 扩展开始销售，$20 一次性买断。',
+  },
+];
+---
+
+<BaseLayout title="时间线" nav="timeline">
+  <div class="page-head">
+    <h1>时间线</h1>
+    <p>重要作品、成长节点和年度总结——只记录真实发生的事。</p>
+  </div>
+
+  <div class="timeline">
+    {
+      events.map((e) => (
+        <div class="timeline-item">
+          <div class="timeline-date">{e.date}</div>
+          <h3>{e.title}</h3>
+          <p>{e.text}</p>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>

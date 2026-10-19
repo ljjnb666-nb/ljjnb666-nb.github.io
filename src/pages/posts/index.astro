@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="文章" nav="posts">
+  <div class="page-head">
+    <h1>文章</h1>
+    <p>造物日志：记录每一次真实的构建——背景、尝试、踩坑、结果。</p>
+  </div>
+
+  {
+    posts.map((p) => (
+      <a class="post-row" href={`/posts/${p.id.replace(/\.mdx?$/, '')}`}>
+        <div class="post-row-title">
+          {p.data.title}
+          {p.data.sample && <span class="badge-sample">示例</span>}
+        </div>
+        {p.data.description && (
+          <p class="post-row-desc">{p.data.description}</p>
+        )}
+        <div class="post-row-meta">
+          {p.data.date.toISOString().slice(0, 10)}
+        </div>
+      </a>
+    ))
+  }
+</BaseLayout>
