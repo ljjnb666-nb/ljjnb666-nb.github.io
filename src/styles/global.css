@@ -49,6 +49,27 @@
   --accent-ink: #93c5fd;
 }
 
+/* ---------- 主题切换过渡 ---------- */
+/* 切换瞬间给 html 加 .theme-anim，让所有颜色属性一起过渡，
+   避免"背景动了、卡片没动"的不协调感；动画结束后移除该类 */
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+  transition: background-color 0.35s ease, color 0.35s ease,
+    border-color 0.35s ease, outline-color 0.35s ease,
+    box-shadow 0.35s ease, fill 0.35s ease,
+    stroke 0.35s ease !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim,
+  html.theme-anim *,
+  html.theme-anim *::before,
+  html.theme-anim *::after {
+    transition: none !important;
+  }
+}
+
 * { box-sizing: border-box; }
 
 html {

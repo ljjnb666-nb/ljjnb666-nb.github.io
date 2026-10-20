@@ -99,6 +99,16 @@ const navItems = [
           btn.addEventListener('click', function () {
             var cur = document.documentElement.getAttribute('data-theme');
             var next = cur === 'dark' ? 'light' : 'dark';
+            var reduce = window.matchMedia(
+              '(prefers-reduced-motion: reduce)'
+            ).matches;
+            if (!reduce) {
+              // 先挂过渡类，再切主题，0.4s 后摘掉，避免影响日常 hover 动画
+              document.documentElement.classList.add('theme-anim');
+              setTimeout(function () {
+                document.documentElement.classList.remove('theme-anim');
+              }, 400);
+            }
             document.documentElement.setAttribute('data-theme', next);
             try {
               localStorage.setItem('zhizao_theme', next);
